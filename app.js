@@ -7,7 +7,6 @@ app.use(express.json());
 
 connectDB();
 
-// Create a new User
 app.post("/users", async (req, res) => {
  try {
   const { name, role } = req.body;
@@ -19,7 +18,6 @@ app.post("/users", async (req, res) => {
  }
 });
 
-// Retrieves all users
 app.get("/users", async (req, res) => {
  try {
   const users = await User.find();
@@ -29,7 +27,6 @@ app.get("/users", async (req, res) => {
  }
 });
 
-// Update a user
 app.put("/users/:id", async (req, res) => {
  try {
   const user = await User.findByIdAndUpdate(req.params.id, req.body, {
@@ -42,7 +39,6 @@ app.put("/users/:id", async (req, res) => {
  }
 });
 
-// Delete a user
 app.delete("/users/:id", async (req, res) => {
  try {
   const user = await User.findByIdAndDelete(req.params.id);
@@ -56,5 +52,5 @@ app.delete("/users/:id", async (req, res) => {
 const port = 5000;
 
 app.listen(port, () => {
- console.log("API server started on port 5000");
+ console.log(`[Server]: API server started on port ${port}`);
 });
